@@ -39,7 +39,7 @@
     }
     #msg { text-align: center; font-weight: bold; margin-bottom: 15px; font-size: 15px; }
 
-    /* A4 Full Height and Stretch Layout */
+    /* A4 Full Height and Stretch Layout (Hidden by default) */
     .sheet-wrapper { 
       display: none; 
       width: 210mm;
@@ -49,7 +49,6 @@
       border: 6px solid #4d6029; 
       padding: 18px 20px; 
       box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
-      display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
@@ -469,7 +468,7 @@
           { name: "अंग्रेजी", half: d.ENG_Half, th: d.ENG_Annual_TH, pr: d.ENG_Annual_PR },
           { name: "संस्कृत", half: d.SAN_Half, th: d.SAN_Annual_TH, pr: d.SAN_Annual_PR },
           { name: "गणित", half: d.MATH_Half, th: d.MATH_Annual_TH, pr: d.MATH_Annual_PR },
-          { name: "विज्ञान", half: d.SCI_Half, th: d.SCI_Annual_TH, pr: d.SCI_Annual_PR },
+          { name: "सामान्य विज्ञान", half: d.SCI_Half, th: d.SCI_Annual_TH, pr: d.SCI_Annual_PR },
           { name: "सामाजिक विज्ञान", half: d.SOC_Half, th: d.SOC_Annual_TH, pr: d.SOC_Annual_PR }
         ];
 
