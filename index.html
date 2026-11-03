@@ -43,7 +43,6 @@
     .sheet-wrapper { 
       display: none; 
       width: 210mm;
-      min-height: 297mm;
       margin: 0 auto; 
       background: #fff; 
       border: 6px solid #4d6029; 
@@ -63,8 +62,8 @@
       justify-content: space-between;
     }
     .school-logo-img {
-      width: 90px;
-      height: 90px;
+      width: 85px;
+      height: 85px;
       object-fit: contain;
     }
     .header-text {
@@ -73,7 +72,7 @@
       padding: 0 10px;
     }
     .dept-title { 
-      font-size: 24px; 
+      font-size: 22px; 
       font-weight: 900; 
       color: #0f172a; 
       margin: 0 0 4px 0; 
@@ -81,38 +80,42 @@
       line-height: 1.2;
     }
     .exam-title { 
-      font-size: 19px; 
+      font-size: 17px; 
       font-weight: 800; 
       color: #1e3a8a; 
       margin: 3px 0; 
     }
     .cert-badge { 
       display: inline-block; 
-      background: #b91c1c; 
-      color: white; 
+      background: #b91c1c !important; 
+      color: white !important; 
       padding: 3px 18px; 
-      font-size: 14px; 
+      font-size: 13.5px; 
       font-weight: bold; 
       border-radius: 4px; 
       margin-top: 3px; 
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
     .district-badge { 
-      background: #334155; 
-      color: white; 
+      background: #334155 !important; 
+      color: white !important; 
       padding: 3px 16px; 
-      font-size: 13.5px; 
+      font-size: 13px; 
       font-weight: bold; 
       border-radius: 3px; 
       display: inline-block; 
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
 
     /* Common Table Styling */
-    table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; }
     table, th, td { border: 1px solid #111; }
     th, td { padding: 3px 4px; text-align: center; }
     
     .top-info-table { margin-bottom: 6px; }
-    .top-info-table td { font-weight: bold; font-size: 11.5px; padding: 3px 5px; }
+    .top-info-table td { font-weight: bold; font-size: 11px; padding: 3px 5px; }
 
     /* Student Info + Photo Box Layout */
     .student-block-wrapper {
@@ -126,8 +129,8 @@
     }
     .student-details {
       flex: 1;
-      font-size: 12px;
-      line-height: 1.8;
+      font-size: 11.5px;
+      line-height: 1.75;
       text-align: left;
     }
     .info-row {
@@ -143,8 +146,8 @@
 
     /* Student Photo Frame */
     .student-photo-container {
-      width: 95px;
-      height: 115px;
+      width: 90px;
+      height: 110px;
       border: 1px solid #111;
       padding: 2px;
       background: #fff;
@@ -161,14 +164,27 @@
     }
 
     /* Marks Tables Grid */
-    .main-grid { display: grid; grid-template-columns: 74% 25%; gap: 10px; }
-    .sub-head { background: #334155; color: white; font-size: 12px; padding: 3px; font-weight: bold; }
-    .marks-table th { background: #f8fafc; font-size: 10.5px; }
+    .main-grid { display: grid; grid-template-columns: 74% 25%; gap: 1%; }
+    .sub-head { 
+      background: #334155 !important; 
+      color: white !important; 
+      font-size: 11.5px; 
+      padding: 3px; 
+      font-weight: bold; 
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .marks-table th { 
+      background: #f8fafc !important; 
+      font-size: 10px; 
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
     .marks-table td.sub-name { text-align: left; font-weight: 600; padding-left: 5px; }
 
     /* Summary Section */
-    .summary-section { margin-top: 8px; display: grid; grid-template-columns: 66% 32%; gap: 12px; font-size: 12px; align-items: start; }
-    .summary-text p { margin: 5px 0; font-size: 12.5px; }
+    .summary-section { margin-top: 6px; display: grid; grid-template-columns: 66% 33%; gap: 1%; font-size: 11.5px; align-items: start; }
+    .summary-text p { margin: 4px 0; font-size: 12px; }
     
     .grade-details-table {
       font-size: 9px;
@@ -179,34 +195,37 @@
 
     /* Seal & Sign Row */
     .sign-row { 
-      margin-top: 35px; 
+      margin-top: 30px; 
       display: flex; 
       justify-content: space-between; 
       font-weight: bold; 
-      font-size: 11.5px; 
+      font-size: 11px; 
       text-align: center; 
     }
     .print-btn-bar { text-align: center; margin-top: 15px; }
 
-    /* Print settings for exact A4 fit */
+    /* Print settings for exact A4 fit and Color Retention */
     @media print {
       @page {
         size: A4 portrait;
-        margin: 5mm;
+        margin: 6mm;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       body { background: none; padding: 0; margin: 0; }
       .search-panel, .print-btn-bar, #msg { display: none !important; }
       .sheet-wrapper { 
         display: block !important; 
-        border: 4px solid #000; 
+        border: 4px solid #4d6029 !important; 
         box-shadow: none; 
         width: 100% !important; 
         max-width: 100% !important; 
-        min-height: auto;
-        padding: 4px 8px; 
+        padding: 6px 10px; 
         margin: 0;
       }
-      .sign-row { margin-top: 40px; }
+      .sign-row { margin-top: 35px; }
     }
   </style>
 </head>
@@ -232,7 +251,7 @@
         <div class="cert-badge">प्रमाण पत्र सह अंकसूची</div>
       </div>
       
-      <div style="width: 90px;"></div>
+      <div style="width: 85px;"></div>
     </div>
     
     <div style="text-align: center; margin-top: 5px;">
@@ -279,7 +298,7 @@
     </div>
   </div>
 
-  <div style="text-align: center; font-weight: bold; background: #e2e8f0; border: 1px solid #111; padding: 3px; font-size: 12px;">परीक्षा परिणाम</div>
+  <div style="text-align: center; font-weight: bold; background: #e2e8f0; border: 1px solid #111; padding: 3px; font-size: 11.5px; -webkit-print-color-adjust: exact; print-color-adjust: exact;">परीक्षा परिणाम</div>
 
   <!-- Main Marks Grid -->
   <div class="main-grid" style="margin-top: 3px;">
@@ -336,13 +355,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td style="font-size: 10.5px;">खेलकूद</td><td id="g1"></td></tr>
-          <tr><td style="font-size: 10.5px;">योग एवं प्राणायाम</td><td id="g2"></td></tr>
-          <tr><td style="font-size: 10.5px;">साहित्यिक</td><td id="g3"></td></tr>
-          <tr><td style="font-size: 10.5px;">सांस्कृतिक</td><td id="g4"></td></tr>
-          <tr><td style="font-size: 10.5px;">मूल्यांकन</td><td id="g5"></td></tr>
-          <tr><td style="font-size: 10.5px;">पर्यावरण संवेदनशीलता</td><td id="g6"></td></tr>
-          <tr><td style="font-size: 10.5px;">कला</td><td id="g7"></td></tr>
+          <tr><td style="font-size: 10px;">खेलकूद</td><td id="g1"></td></tr>
+          <tr><td style="font-size: 10px;">योग एवं प्राणायाम</td><td id="g2"></td></tr>
+          <tr><td style="font-size: 10px;">साहित्यिक</td><td id="g3"></td></tr>
+          <tr><td style="font-size: 10px;">सांस्कृतिक</td><td id="g4"></td></tr>
+          <tr><td style="font-size: 10px;">मूल्यांकन</td><td id="g5"></td></tr>
+          <tr><td style="font-size: 10px;">पर्यावरण संवेदनशीलता</td><td id="g6"></td></tr>
+          <tr><td style="font-size: 10px;">कला</td><td id="g7"></td></tr>
         </tbody>
       </table>
     </div>
@@ -359,7 +378,7 @@
 
     <div>
       <table class="grade-details-table">
-        <tr style="background: #334155; color: white;"><th colspan="4">ग्रेड का विवरण</th></tr>
+        <tr style="background: #334155 !important; color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;"><th colspan="4">ग्रेड का विवरण</th></tr>
         <tr><th>प्रतिशत</th><th>ग्रेड</th><th>प्रतिशत</th><th>ग्रेड</th></tr>
         <tr><td>91 से अधिक</td><td>A+</td><td>51 से 60</td><td>C+</td></tr>
         <tr><td>81 से 90</td><td>A</td><td>41 से 50</td><td>C</td></tr>
