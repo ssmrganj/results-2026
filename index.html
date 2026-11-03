@@ -130,7 +130,7 @@
     }
     .info-row {
       display: flex;
-      justify-content: space-between;
+      gap: 20px;
       margin-bottom: 2px;
     }
     .dotted-data { 
@@ -165,16 +165,32 @@
     .marks-table td.sub-name { text-align: left; font-weight: 600; padding-left: 6px; }
 
     /* Summary Section */
-    .summary-section { margin-top: 10px; display: grid; grid-template-columns: 72% 28%; gap: 10px; font-size: 13px; }
+    .summary-section { margin-top: 10px; display: grid; grid-template-columns: 68% 32%; gap: 10px; font-size: 13px; }
     .summary-text p { margin: 6px 0; font-size: 13.5px; }
     
-    .sign-row { margin-top: 30px; display: flex; justify-content: space-between; font-weight: bold; font-size: 12px; text-align: center; }
+    .grade-details-table {
+      font-size: 9.5px;
+    }
+    .grade-details-table th, .grade-details-table td {
+      padding: 2px 4px;
+    }
+
+    /* Seal & Sign Row with clear spacing */
+    .sign-row { 
+      margin-top: 50px; 
+      display: flex; 
+      justify-content: space-between; 
+      font-weight: bold; 
+      font-size: 12px; 
+      text-align: center; 
+    }
     .print-btn-bar { text-align: center; margin-top: 10px; }
 
     @media print {
       body { background: none; padding: 0; }
       .search-panel, .print-btn-bar, #msg { display: none !important; }
       .sheet-wrapper { display: block !important; border: 5px solid #000; box-shadow: none; width: 100%; max-width: 100%; padding: 6px; }
+      .sign-row { margin-top: 60px; }
     }
   </style>
 </head>
@@ -192,7 +208,6 @@
   <!-- Header with School Logo -->
   <div class="header-box">
     <div class="header-content">
-      <!-- School Logo (Logo file GitHub repo me logo.png naam se upload karein) -->
       <img src="logo.png" alt="Logo" class="school-logo-img" onerror="this.style.display='none'">
       
       <div class="header-text">
@@ -201,7 +216,6 @@
         <div class="cert-badge">प्रमाण पत्र सह अंकसूची</div>
       </div>
       
-      <!-- Right balancing space -->
       <div style="width: 85px;"></div>
     </div>
     
@@ -328,21 +342,19 @@
     </div>
 
     <div>
-      <table style="font-size: 10px;">
-        <tr style="background: #334155; color: white;"><th colspan="2">ग्रेड का विवरण</th></tr>
-        <tr><th>प्राप्तांकों का प्रतिशत</th><th>ग्रेड</th></tr>
-        <tr><td>91 से अधिक</td><td>A+</td></tr>
-        <tr><td>81 से 90</td><td>A</td></tr>
-        <tr><td>71 से 80</td><td>B+</td></tr>
-        <tr><td>61 से 70</td><td>B</td></tr>
-        <tr><td>51 से 60</td><td>C+</td></tr>
-        <tr><td>41 से 50</td><td>C</td></tr>
-        <tr><td>33 से 40</td><td>D</td></tr>
-        <tr><td>33 से नीचे</td><td>E</td></tr>
+      <!-- Grade Details Table in 2 Compact Rows/Columns -->
+      <table class="grade-details-table">
+        <tr style="background: #334155; color: white;"><th colspan="4">ग्रेड का विवरण</th></tr>
+        <tr><th>प्रतिशत</th><th>ग्रेड</th><th>प्रतिशत</th><th>ग्रेड</th></tr>
+        <tr><td>91 से अधिक</td><td>A+</td><td>51 से 60</td><td>C+</td></tr>
+        <tr><td>81 से 90</td><td>A</td><td>41 से 50</td><td>C</td></tr>
+        <tr><td>71 से 80</td><td>B+</td><td>33 से 40</td><td>D</td></tr>
+        <tr><td>61 से 70</td><td>B</td><td>33 से नीचे</td><td>E</td></tr>
       </table>
     </div>
   </div>
 
+  <!-- Seal and Signature Space -->
   <div class="sign-row">
     <div>हस्ताक्षर -<br>संस्था प्रमुख एवं संकुल</div>
     <div>सचिव -<br>जिला केन्द्रीकृत परीक्षा समिति</div>
@@ -356,7 +368,6 @@
 </div>
 
 <script>
-  // Yahan apna Google Apps Script Web App URL dalein
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwa1BlxiLLcvMh83LPXZqobxBn6hXRXUO-ZEKqMz92j2gDLdL7O12MVmpgTuNRkTZ6C/exec";
 
   function getGrade(val) {
@@ -412,7 +423,7 @@
         document.getElementById("mSchool").innerText = d.SchoolName || "-";
         document.getElementById("mCenter").innerText = d.CenterName || "-";
 
-        // Student Photo: agar photos folder me roll.jpg hai toh load hoga
+        // Student Photo
         document.getElementById("mStudentPhoto").src = "photos/" + roll + ".jpg";
 
         // Subject calculation (Weighted 30% and 70%)
@@ -477,7 +488,7 @@
         document.getElementById("g6").innerText = d.G_Env || "A";
         document.getElementById("g7").innerText = d.G_Art || "A";
 
-        // Summary Calculations: Percentage calculation out of 600
+        // Summary Calculations
         const accuratePercent = ((grandFinal / 600) * 100).toFixed(2);
 
         document.getElementById("sTotal").innerText = grandFinal;
